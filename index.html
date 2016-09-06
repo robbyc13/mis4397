@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Find Something To Do</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-12*6">
+
+      <nav class="navbar navbar-default" role = ".navigation">
+
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <ul class="nav nav-tabs" role =".navigation">
+        <li role="presentation" class="active"><a href="#">Map</a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+      </ul>
+    </div>
+
+
+
+
+    </div><!-- /.navbar-collapse -->
+
+    <div class="page-header">
+  <h1>Welcome to a site.... <small>THAT HAS NO NAME!</small></h1>
+</div>
+
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="jumbotron">
+  <h1>Hello, Houston!</h1>
+  <p>There are a few events in the area for you to check out!</p>
+</div>
+
+<div class="row">
+  <!-- Name of column, size of browser, size of column -->
+      <div class="col-mid-8 col-xs-6 hidden-xs">
+
+
+
+
+
+
+        <style type="text/css">
+                    /* Set a size for our map container, the Google Map will take up 100% of this container */
+                    #map {
+                        width: 400px;
+                        height: 500px;
+                    }
+                </style>
+
+                <!--
+                    You need to include this script tag on any page that has a Google Map.
+
+                    The following script tag will work when opening this example locally on your computer.
+                    But if you use this on a localhost server or a live website you will need to include an API key.
+                    Sign up for one here (it's free for small usage):
+                        https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+
+                    After you sign up, use the following script tag with YOUR_GOOGLE_API_KEY replaced with your actual key.
+                        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY"></script>
+                -->
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAfMmOuG3TepfrkcCYpMA1lvsnefj5cvY"></script>
+
+                <script type="text/javascript">
+                    // When the window has finished loading create our google map below
+                    google.maps.event.addDomListener(window, 'load', init);
+
+                    function init() {
+                        // Basic options for a simple Google Map
+                        // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+                        var mapOptions = {
+                            // How zoomed in you want the map to start at (always required)
+                            zoom: 15,
+
+                            // The latitude and longitude to center the map (always required)
+                            center: new google.maps.LatLng(29.7179228,-95.3418404), // UofH
+
+                            // How you would like to style the map.
+                            // This is where you would paste any style found on Snazzy Maps.
+                            styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#000000"},{"lightness":13}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#144b53"},{"lightness":14},{"weight":1.4}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#08304b"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#0c4152"},{"lightness":5}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#0b434f"},{"lightness":25}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#0b3d51"},{"lightness":16}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"transit","elementType":"all","stylers":[{"color":"#146474"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#021019"}]}]
+                        };
+
+                        // Get the HTML DOM element that will contain your map
+                        // We are using a div with id="map" seen below in the <body>
+                        var mapElement = document.getElementById('map');
+
+                        // Create the Google Map using our element and options defined above
+                        var map = new google.maps.Map(mapElement, mapOptions);
+
+                        // Let's also add a marker while we're at it
+
+
+
+                        var my_events =[
+                          ["Event 1", 40.086061, -75.451270,"1","aaffaa"],
+                          ["Event 2",  "33.690796,-82.884563","2","888888"]
+                                        ];
+
+
+              function createmarkers(my_events1){
+
+              for (i=0; i  < my_events1.length; i++)
+
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(my_events1[i][1]+","+my_events1[i][2]),
+                            map: map,
+                            title: my_events1[i][0]
+                        });
+                    }
+                  }
+  createmarkers(my_events);
+                </script>
+<html>
+            </head>
+            <body onload="initialize()">
+
+
+                <!-- The element that will contain our Google Map. This is used in both the Javascript and CSS above. -->
+                <div id="map">
+                 class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">List group item heading</h4>
+    <p class="list-group-item-text">...</p>
+  </a>
+</div>
+  </div>
+  <div class="col-xs-6 col-lg-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+              </div><!--/.col-xs-6.col-lg-4-->
+
+    </div>
+
+
+
+            </body>
+        </html>
+
+        </body>
+        </html>
